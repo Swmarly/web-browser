@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kona Browser — A Konata Izumi inspired web browser</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="background-gradient"></div>
+  <div class="background-stars" aria-hidden="true"></div>
+  <main class="browser-shell" role="application" aria-label="Kona Browser window">
+    <header class="browser-header">
+      <div class="brand">
+        <div class="brand-avatar" aria-hidden="true"></div>
+        <div class="brand-text">
+          <span class="brand-name">Kona Browser</span>
+          <span class="brand-subtitle">Konata Izumi’s comfy corner of the web</span>
+        </div>
+      </div>
+      <div class="window-controls" aria-hidden="true">
+        <span class="control control-min"></span>
+        <span class="control control-max"></span>
+        <span class="control control-close"></span>
+      </div>
+    </header>
+
+    <section class="tab-bar" id="tab-bar" aria-label="Open tabs" role="tablist">
+      <button class="new-tab" id="new-tab-button" type="button" title="Open a new tab" aria-label="Open a new tab">＋</button>
+    </section>
+
+    <section class="toolbar" aria-label="Browser navigation">
+      <div class="toolbar-left">
+        <button class="nav-button" id="back-button" type="button" title="Back" aria-label="Go back" disabled>⟵</button>
+        <button class="nav-button" id="forward-button" type="button" title="Forward" aria-label="Go forward" disabled>⟶</button>
+        <button class="nav-button" id="refresh-button" type="button" title="Refresh" aria-label="Refresh tab">⟳</button>
+      </div>
+      <label class="address" for="address-bar">
+        <span class="address-icon" aria-hidden="true">🌸</span>
+        <input
+          id="address-bar"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Search the web or type a URL, nya~"
+          aria-label="Search or enter web address"
+        />
+      </label>
+      <div class="toolbar-right">
+        <button class="nav-button" id="home-button" type="button" title="Home" aria-label="Go to Kona home">🏠</button>
+        <button class="nav-button" id="theme-button" type="button" title="Toggle night mode" aria-label="Toggle night mode">🌙</button>
+      </div>
+    </section>
+
+    <section class="tab-content" id="tab-content" aria-live="polite"></section>
+  </main>
+
+  <aside class="konata-decoration" aria-hidden="true">
+    <div class="konata-glow"></div>
+    <div class="konata-outline"></div>
+  </aside>
+
+  <template id="home-template">
+    <div class="home-view" role="document">
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Kona Browser</h1>
+          <p>
+            A playful browser hub inspired by Konata Izumi. Cozy bookmarks, pastel vibes, and everything you need for
+            an otaku-powered surfing session.
+          </p>
+          <div class="hero-actions">
+            <button class="pill-button" type="button" data-action="randomQuote">Spark joy ✨</button>
+            <button class="pill-button" type="button" data-action="themeToggle">Switch palette 🌈</button>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="https://placehold.co/520x360/7a9eff/ffffff?text=Konata+Hero" alt="Konata inspired hero illustration" />
+        </div>
+      </section>
+
+      <section class="dashboard">
+        <article class="card search-card">
+          <h2>Quick Search</h2>
+          <p>Jump straight into the anime multiverse or look up anything else you love.</p>
+          <label class="card-search">
+            <input type="text" placeholder="Anime, manga, memes..." data-action="quickSearch" />
+            <span>↵</span>
+          </label>
+          <div class="search-suggestions">
+            <button type="button" data-url="https://www.anime-planet.com">Anime Planet</button>
+            <button type="button" data-url="https://myanimelist.net">MyAnimeList</button>
+            <button type="button" data-url="https://anilist.co">AniList</button>
+            <button type="button" data-url="https://mangadex.org">MangaDex</button>
+          </div>
+        </article>
+
+        <article class="card favorites-card">
+          <h2>Kona’s Favorites</h2>
+          <ul class="favorites-list">
+            <li>
+              <button type="button" data-url="https://en.wikipedia.org/wiki/Konata_Izumi">
+                <img src="https://placehold.co/160x120/7d9dff/ffffff?text=Konata+Wiki" alt="Konata article preview" />
+                <div>
+                  <h3>Konata Lore</h3>
+                  <p>Catch up on Lucky☆Star trivia and Konata quotes.</p>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-url="https://www.crunchyroll.com/series/G6XH23K6Y/lucky-star">
+                <img src="https://placehold.co/160x120/8499ff/ffffff?text=Lucky+Star" alt="Lucky Star streaming preview" />
+                <div>
+                  <h3>Stream Lucky☆Star</h3>
+                  <p>Rewatch Konata’s favorite moments in HD.</p>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-url="https://www.pixiv.net/en/tags/%E6%9D%B1%E6%96%B9%E3%82%B3%E3%83%8A">
+                <img src="https://placehold.co/160x120/90a9ff/ffffff?text=Fan+Art" alt="Konata fan art preview" />
+                <div>
+                  <h3>Fan Art Dive</h3>
+                  <p>Browse fresh Konata art curated every morning.</p>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card mood-card">
+          <h2>Mood Mixer</h2>
+          <p>Choose a pastel mood to tint your browsing session.</p>
+          <div class="mood-swatches">
+            <button type="button" data-theme="default" aria-label="Default Kona theme"></button>
+            <button type="button" data-theme="sunrise" aria-label="Sunrise theme"></button>
+            <button type="button" data-theme="twilight" aria-label="Twilight theme"></button>
+            <button type="button" data-theme="midnight" aria-label="Midnight theme"></button>
+          </div>
+          <div class="quote" data-role="quote">
+            "The power of otaku spirit is unstoppable!"
+          </div>
+        </article>
+      </section>
+
+      <section class="news">
+        <h2>Konata’s Activity Feed</h2>
+        <div class="news-items">
+          <article>
+            <img src="https://placehold.co/220x160/8ca0ff/ffffff?text=Gaming+Night" alt="Konata gaming night illustration" />
+            <div>
+              <h3>Gaming Night Marathon</h3>
+              <p>Queue up MMO raids and speedruns in a new dedicated tab.</p>
+              <button type="button" data-url="https://www.twitch.tv/directory/game/Final%20Fantasy%20XIV%20Online">Open stream schedule</button>
+            </div>
+          </article>
+          <article>
+            <img src="https://placehold.co/220x160/94a8ff/ffffff?text=Cosplay+Ideas" alt="Konata cosplay moodboard" />
+            <div>
+              <h3>Cosplay Moodboard</h3>
+              <p>Gather inspo for the next convention with curated lists.</p>
+              <button type="button" data-url="https://www.pinterest.com/search/pins/?q=konata%20izumi%20cosplay">View cosplay ideas</button>
+            </div>
+          </article>
+          <article>
+            <img src="https://placehold.co/220x160/9cb2ff/ffffff?text=Anime+Calendar" alt="Anime release calendar" />
+            <div>
+              <h3>Seasonal Anime Calendar</h3>
+              <p>Track upcoming releases and mark premiere nights.</p>
+              <button type="button" data-url="https://anichart.net/airing">Check current season</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
