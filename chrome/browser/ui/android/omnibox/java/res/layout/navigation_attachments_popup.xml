@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2025 The Chromium Authors
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/navigation_attachments_recent_tabs_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="@dimen/omnibox_suggestion_content_padding"
+        android:singleLine="true"
+        android:text="@string/recent_tabs"
+        android:textAppearance="@style/TextAppearance.TextMediumThick.Primary"
+        android:visibility="gone"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tab_attachment_recycler_view"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:fadingEdgeLength="8dp"
+        android:paddingStart="@dimen/omnibox_suggestion_content_padding"
+        android:paddingEnd="@dimen/omnibox_suggestion_content_padding"
+        android:focusable="false"/>
+
+    <!-- TODO(crbug.com/436888404): either drop clipboard or use proper strings.
+    -->
+    <org.chromium.ui.widget.ButtonCompat
+        android:id="@+id/navigation_attachments_paste_from_clipboard_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/min_touch_target_size"
+        android:drawableStart="@drawable/ic_content_copy"
+        android:drawablePadding="8dp"
+        style="@style/TextButton"
+        app:drawableTint="@color/default_icon_color_tint_list"
+        android:text="@string/clipboard_permission_title"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:visibility="gone"/>
+
+    <org.chromium.ui.widget.ButtonCompat
+        android:id="@+id/navigation_attachments_camera_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/min_touch_target_size"
+        android:drawableStart="@drawable/ic_photo_camera"
+        android:drawablePadding="8dp"
+        style="@style/TextButton"
+        app:drawableTint="@color/default_icon_color_tint_list"
+        android:text="@string/photo_picker_camera"
+        android:singleLine="true"
+        android:textAlignment="viewStart"/>
+
+    <org.chromium.ui.widget.ButtonCompat
+        android:id="@+id/navigation_attachments_pick_picture_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/min_touch_target_size"
+        android:drawableStart="@drawable/ic_collections_grey"
+        android:drawablePadding="8dp"
+        style="@style/TextButton"
+        app:drawableTint="@color/default_icon_color_tint_list"
+        android:text="@string/photo_picker_browse"
+        android:singleLine="true"
+        android:textAlignment="viewStart"/>
+
+    <org.chromium.ui.widget.ButtonCompat
+        android:id="@+id/navigation_attachments_pick_file_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/min_touch_target_size"
+        android:drawableStart="@drawable/ic_attach_file_24dp"
+        android:drawablePadding="8dp"
+        style="@style/TextButton"
+        app:drawableTint="@color/default_icon_color_tint_list"
+        android:text="@string/photo_picker_browse"
+        android:singleLine="true"
+        android:textAlignment="viewStart"/>
+
+</LinearLayout>

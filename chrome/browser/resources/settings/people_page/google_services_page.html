@@ -1,0 +1,12 @@
+<style>
+  settings-personalization-options {
+    --settings-signin-choice-padding: 0px 20px 10px;
+  }
+</style>
+
+<settings-subpage page-title="$i18n{googleServicesPageTitle}"
+    route-path$="[[routePath]]">
+  <settings-personalization-options prefs="{{prefs}}"
+      sync-status="[[syncStatus_]]">
+  </settings-personalization-options>
+</settings-subpage>

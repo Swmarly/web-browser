@@ -1,0 +1,11 @@
+include_rules = [
+  "+components/services/storage",
+  "+components/fingerprinting_protection_filter/interventions/common",
+  "+third_party/leveldatabase",
+]
+
+specific_include_rules = {
+  "fake_.*\.cc": [
+    "+services/network/test",
+  ]
+}

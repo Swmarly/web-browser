@@ -1,0 +1,19 @@
+Name: pthreadpool
+Short Name: pthreadpool
+URL: https://github.com/google/pthreadpool
+Version: 75b23a57b4e5ad206e8f69b698b5f1df04cf3d32
+Date: 2025-10-14
+Update Mechanism: Manual
+License: BSD-2-Clause
+License File: src/LICENSE
+Security Critical: Yes
+Shipped: yes
+
+Description:
+pthreadpool is a portable and efficient thread pool implementation. It provides
+similar functionality to #pragma omp parallel for, but with additional features.
+This library supports //third_party/xnnpack, which in turn supports
+//third_party/tflite.
+chromium/jobs.cc implements a shim of `pthreadpool_parallelize()` that uses
+Chromium Jobs API to schedule the parallel tasks with Chromium's ThreadPool
+workers.
